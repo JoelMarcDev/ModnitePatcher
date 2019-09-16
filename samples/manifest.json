@@ -1,0 +1,68 @@
+{
+    "Name": "Localhost Patch for Fortnite v6.20",
+    "Version": 1,
+    "Patches": [
+        {
+            "PatchType": "DecryptPak",
+            "Chunk": "pakchunk0-WindowsClient",
+            "Key": "0x60D1D252C5996FAC112A74EC72F84A6BCD2C61F7050812F70D0928B41A3D682A"
+        },
+        {
+            "PatchType": "ReplaceBytes",
+            "Description": "Fix pak hash",
+            "GameFile": "PakFile",
+            "Chunk": "pakchunk0-WindowsClient",
+            "SeekOrigin": "End",
+            "Offset": -20,
+            "OriginalBytes": "B2 24 AD 7C C6 88 AB 0F D3 D5 1F 5C 28 CA DD C3 EB 89 A2 90",
+            "NewBytes": "5E 2E 19 E6 F9 73 E2 8B 74 92 F3 CC 77 8E DF 20 32 6D 67 3E"
+        },
+        {
+            "PatchType": "ReplacePakFile",
+            "Chunk": "pakchunk0-WindowsClient",
+            "FileName": "FortniteGame/Config/DefaultEngine.ini",
+            "ReplacementFileName": "DefaultEngine.ini",
+            "Padding": "Spaces"
+        },
+        {
+            "PatchType": "ReplacePakFile",
+            "Chunk": "pakchunk0-WindowsClient",
+            "FileName": "FortniteGame/Config/DefaultGame.ini",
+            "ReplacementFileName": "DefaultGame.ini",
+            "Padding": "Spaces"
+        },
+        {
+            "PatchType": "ReplaceBytes",
+            "Description": "Disable TLS for OAuth requests",
+            "GameFile": "GameExecutable",
+            "SeekOrigin": "Begin",
+            "Offset": 58766896,
+            "OriginalBytes": "68 00 74 00 74 00 70 00 73 00 00 00 00 00 00 00 4F 6E 6C 69 6E 65 41 63 63 6F 75 6E 74 4D 61 70 70 69 6E 67 2E 51 75 65 72 79 45 78 74 65 72 6E 61 6C 41 63 63 6F 75 6E 74 73 00 00 00 00 00 00 3A 00 2F 00 2F 00 00 00 42 00 6C 00 6F 00 63 00",
+            "NewBytes": "68 00 74 00 74 00 70 00 3A 00 00 00 00 00 00 00 4F 6E 6C 69 6E 65 41 63 63 6F 75 6E 74 4D 61 70 70 69 6E 67 2E 51 75 65 72 79 45 78 74 65 72 6E 61 6C 41 63 63 6F 75 6E 74 73 00 00 00 00 00 00 2F 00 2F 00 31 00 00 00 42 00 6C 00 6F 00 63 00"
+        },
+        {
+            "PatchType": "ReplaceBytes",
+            "Description": "Disable TLS for XMPP service",
+            "GameFile": "GameExecutable",
+            "SeekOrigin": "Begin",
+            "Offset": 63288080,
+            "OriginalBytes": "77 00 73 00 73 00 3A 00 2F 00 2F 00 25 00 73 00",
+            "NewBytes": "77 00 73 00 3A 00 2F 00 2F 00 25 00 73 00 00 00"
+        },
+        {
+            "PatchType": "DeleteFile",
+            "Description": "Prevents accidental launch of anti-cheat",
+            "GameFile": "BEExecutable"
+        },
+        {
+            "PatchType": "DeleteFile",
+            "Description": "Prevents accidental launch of anti-cheat",
+            "GameFile": "EACExecutable"
+        },
+        {
+            "PatchType": "DeleteFile",
+            "Description": "Prevents accidental launch of anti-cheat",
+            "GameFile": "FortniteLauncher"
+        }
+    ]
+}
